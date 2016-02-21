@@ -24,7 +24,7 @@ true-cli ./test/test.scss
 Replace the path to your own custom unit tests and they will run and produce test results in the console.
 
 ## Config
-There are two config maps which you can alter or customise, these are for the strings and the delimiters which you can override if you so choose.
+There are two config maps which you can override or customise, these are for the output strings for error feedback and the delimiters with which the selector names will be constructed.
 - **$strings**: For feedback in the console
 - **$delimiters**: BEM delimiter config 
 
@@ -34,7 +34,7 @@ There are two config maps which you can alter or customise, these are for the st
 - **modifier**: Generates a modifier selector based off of a block or an element or both
 
 ## Shorthand Mixins
-Probably overkill however there are some shorthand mixins which merely call the above expanded versions for savings keystrokes!
+Probably overkill however there are some shorthand mixins which merely call the above expanded versions for saving keystrokes!
 - **b**: shorthand for the block mixin
 - **e**: Shorthand for the element mixin
 - **m**: shotahnd for the modifier mixin
