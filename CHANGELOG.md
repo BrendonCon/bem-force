@@ -4,3 +4,4 @@
  - Moved key files into BEMForce folder
  - Corrected README file
  - Added link to True
+ - Added link to app.scss direct from README

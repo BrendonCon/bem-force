@@ -1,7 +1,7 @@
 # BEMForce
 An opinionated collection of mixins to enforce **BEM selector naming**. As your compile your Sass, warnings will be output in the console if BEM rules are broken.   
 
-**PLEASE NOTE:** A working example implementation can be found in **./scss/app.scss**.
+**PLEASE NOTE:** A working example implementation can be found in **[./scss/app.scss](https://github.com/BrendonCon/BemForce/blob/master/scss/app.scss)**.
 
 ## Install
 Ensure you have Ruby **2.1.5** and Sass **3.4.21** or greater installed. I have added unit tests for the functions in BEMForce making use of Oddbird's [True](https://github.com/oddbird/true) Sass unit testing framework. You will need to install two depedencies for unit testing, True and True-Cli. 
