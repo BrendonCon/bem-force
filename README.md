@@ -59,6 +59,27 @@ Probably overkill however there are some shorthand mixins which merely call the 
   }
 }
 ```
+
+**Shorthand Mixins:**
+```sass
+@include b(header) {
+  height: 10%;
+  
+  @include m(fixed) {
+    width: 640px;
+  }
+  
+  @include e(search) {
+    float: right;
+    
+    @include m(left) {
+      float: left;
+      height: 200px;
+    }
+  }
+}
+```
+
 **CSS:**
 ```css
 .header {
