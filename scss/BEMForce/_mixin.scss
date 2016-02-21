@@ -1,0 +1,88 @@
+
+// ================================= MIXINS =================================
+
+/*
+  @name block
+  @param $name {string}
+  @description Generate module block container
+*/
+
+@mixin block($name: null) {
+  $parent: quote(&);
+  
+  @if isDefined($parent) {
+    @include output(block-unique);
+  } @else if isDefined($name) {
+    .#{$name} {
+      @content;
+    }  
+  } @else {
+    @include output(valid-name-block);
+  }
+}
+
+/*
+  @name element
+  @param $name {string}
+  @description Generates an element within a block
+*/
+
+@mixin element($name) {
+  $parent: quote(&);
+  $delimiter: map-get($delimiters, element);
+  
+  @if isDefined($parent) {
+    @if isElement($parent) or isModifier($parent) {
+      @include output(element-unique);
+    } @else if isDefined($name) {
+      &#{$delimiter}#{$name} {
+        @content;  
+      }   
+    } @else {
+      @include output(valid-name-element);
+    }
+  } @else {
+    @include output(element-belong);
+  }
+}
+
+/*
+  @name modifier
+  @param $name {string}
+  @description Generates a modifier on a block or element
+*/
+
+@mixin modifier($name) {
+  $parent: quote(&);
+  $delimiter: map-get($delimiters, modifier);
+
+  @if isDefined($parent) {
+    @if isModifier($parent) {
+      @include output(modifier-unique);
+    } @else if isDefined($name) {
+      &#{$delimiter}#{$name} {
+        @content;
+      }
+    } @else {
+      @include output(valid-name-modifier);
+    }  
+  } @else {
+    @include output(modifier-belong);
+  }
+}
+
+/*
+  @name ouput
+  @param $string {string}
+  @description Gets string from string map to output to the console
+*/
+
+@mixin output($string) {
+  $str: to_lower_case($string);
+  
+  @if map-has-key($strings, $string) {
+    @warn map-get($strings, $string);  
+  } @else {
+    @warn map-get($strings, string-missing);
+  }
+}

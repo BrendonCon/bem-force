@@ -1,0 +1,9 @@
+**/.DS_Store
+pkg/*
+.bundle
+Gemfile.lock
+.sass-cache/
+test/.sass-cache/
+*.css.map
+node_modules/
+bower_components
