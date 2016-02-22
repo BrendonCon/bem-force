@@ -1,0 +1,19 @@
+/* ================ EXAMPLE ================ */
+
+/* Your code starts here */
+.header {
+  height: 10%;
+}
+
+.header--fixed {
+  width: 640px;
+}
+
+.header__search {
+  float: right;
+}
+
+.header__search--left {
+  float: left;
+  height: 200px;
+}

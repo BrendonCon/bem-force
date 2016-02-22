@@ -1,0 +1,103 @@
+
+// ================================ IMPORT(S) ================================
+
+@import "true";
+@import "../scss/BEMForce/manifest";
+
+// ================================= SUITE(S) =================================
+
+@include test-module("BEMForce isDefined function") {
+	@include test("should handle 0") {
+		$actual: isDefined(0);
+		$expected: false;
+		@include assert-equal($actual, $expected);
+	} 
+	
+	@include test("should handle null") {
+		$actual: isDefined(null);
+		$expected: false;
+		@include assert-equal($actual, $expected);
+	} 
+	
+	@include test("should handle false") {
+		$actual: isDefined(false);
+		$expected: false;
+		@include assert-equal($actual, $expected);
+	}
+	
+	@include test("should handle ''") {
+		$actual: isDefined('');
+		$expected: false;
+		@include assert-equal($actual, $expected);
+	} 
+	
+	@include test("should handle a value of true") {
+		$actual: isDefined(true);
+		$expected: true;
+		@include assert-equal($actual, $expected);
+	}
+}
+
+@include test-module("BEMForce isBlock function") {
+	@include test("should handle a block") {
+		$actual: isBlock('block');
+		$expected: true;
+		@include assert-equal($actual, $expected);
+	}
+	
+	@include test("should handle an element") {
+		$actual: isBlock('block__');
+		$expected: false;
+		@include assert-equal($actual, $expected);
+	}
+	
+	@include test("should handle a modifier") {
+		$actual: isBlock('block--mod');
+		$expected: false;
+		@include assert-equal($actual, $expected);
+	}
+}
+
+@include test-module("BEMForce isElement function") {
+	@include test("should return true if it is an element") {
+		$actual: isElement('block__elem');
+		$expected: true;
+		@include assert-equal($actual, $expected);
+	}
+	
+	@include test("should return false if the selector is not an element") {
+		$actual: isElement('block--elem');
+		$expected: false;
+		@include assert-equal($actual, $expected);
+	}
+	
+	@include test("should return false if selector is a block") {
+		$actual: isElement('block');
+		$expected: false;
+		@include assert-equal($actual, $expected);
+	}
+}
+
+@include test-module("BEMForce isModifier function") {
+	@include test("should return true if the selector is a modifier") {
+		$actual: isModifier('block--mod');
+		$expected: true;
+		@include assert-equal($actual, $expected); 
+	}
+	
+	@include test("should return false if it is a block") {
+		$actual: isModifier('block');
+		$expected: false;
+		@include assert-equal($actual, $expected);
+	}
+	
+	@include test("should return false if it is a element") {
+		$actual: isModifier('block__');
+		$expected: false;
+		@include assert-equal($actual, $expected);
+	}
+}
+
+// ================================== REPORT ==================================
+
+@include report;
