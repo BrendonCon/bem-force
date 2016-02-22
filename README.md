@@ -16,7 +16,7 @@ gem install true-cli
 ```
 Alternatively you can run the **install.bat** file which essentially runs these two commands above.
 
-Once both are install you can run the unit tests like so:
+Once both are installed you can run the unit tests like so:
 
 ```
 true-cli ./test/test.scss
