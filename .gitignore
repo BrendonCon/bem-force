@@ -7,7 +7,5 @@ test/.sass-cache/
 *.css.map
 node_modules/
 bower_components
-<<<<<<< HEAD
 prepros.*
-=======
->>>>>>> d5f2c0e3e5fd5dad8e0c0bf7f7fef439a0a3b6ae
+
