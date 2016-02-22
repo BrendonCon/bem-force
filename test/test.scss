@@ -7,7 +7,7 @@
 // ================================= SUITE(S) =================================
 
 @include test-module("BEMForce isDefined function") {
-	@include test("should handle 0") {
+  @include test("should handle 0") {
 		$actual: isDefined(0);
 		$expected: false;
 		@include assert-equal($actual, $expected);
