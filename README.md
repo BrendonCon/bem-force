@@ -1,5 +1,5 @@
 # BEMForce
-An opinionated collection of mixins to enforce **BEM selector naming**. As your compile your Sass, warnings will be output in the console if BEM rules are broken.   
+An opinionated collection of mixins to enforce **BEM selector naming**. As you compile your Sass, warnings will be output in the console if BEM rules are broken.   
 
 **PLEASE NOTE:** A working example implementation can be found in **[./scss/app.scss](https://github.com/BrendonCon/BemForce/blob/master/scss/app.scss)**.
 
@@ -36,8 +36,8 @@ There are two config maps which you can override or customise, these are for the
 ## Shorthand Mixins
 Probably overkill however there are some shorthand mixins which merely call the above expanded versions for saving keystrokes!
 - **b**: shorthand for the block mixin
-- **e**: Shorthand for the element mixin
-- **m**: shotahnd for the modifier mixin
+- **e**: shorthand for the element mixin
+- **m**: shorthand for the modifier mixin
 
 ## Usage 
 **Scss:**
