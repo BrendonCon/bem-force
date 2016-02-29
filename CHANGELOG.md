@@ -1,5 +1,5 @@
 # Changelog
-## 0.0.2 (22/02/2016)
+## 0.0.2 (29/02/2016)
  - Added package.json to handle npm dependencies 
  - Added gulp build system
  - Added Sass to Gemfile
