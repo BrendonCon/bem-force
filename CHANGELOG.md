@@ -2,6 +2,9 @@
 ## 0.0.2 (22/02/2016)
  - Added package.json to handle npm dependencies 
  - Added gulp build system
+ - Added Sass to Gemfile
+ - Update to README.md
+ - Bump up VERSION
 
 ## 0.0.1 (22/02/2016)
  - Added shorthand mixins
