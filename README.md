@@ -14,18 +14,16 @@ gem install true
 ```
 gem install true-cli
 ```
-**Install NPM Dependencies:**
-```
-npm update
-```
-Alternatively you can run the **install.bat** file which essentially runs these two commands above.
-
 Once both are installed you can run the unit tests like so:
-
 ```
 true-cli ./test/test.scss
 ```
 Replace the path to your own custom unit tests and they will run and produce test results in the console.
+
+**Install NPM Dependencies:**
+```
+npm update
+```
 
 ## Config
 There are two config maps which you can override or customise, these are for the output strings for error feedback and the delimiters with which the selector names will be constructed.
@@ -104,7 +102,7 @@ Probably overkill however there are some shorthand mixins which merely call the 
 }
 ```
 ## Using Gulp
-The following gulp processes are available for you to use:
+gulpfile.js has the following tasks avaiable to run via the gulp-cli:
 - **gulp-concat**: Concatenates all the BEMForce files to one .scss partial
 
 ```
@@ -118,6 +116,4 @@ gulp concat
 gulp sass
 
 ```
-
-You can run either like so:
 
