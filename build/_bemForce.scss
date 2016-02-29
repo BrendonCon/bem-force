@@ -32,7 +32,7 @@ $delimiters: (
 
 /*
   @name isDefined
-  @param $value {mixedType}
+  @param $value {any}
   @description Checks to see if the value is defined
 */
 
@@ -42,7 +42,7 @@ $delimiters: (
 
 /*
   @name isBlock
-  @param $selector {cssSelector}
+  @param $selector {string}
   @description Checks to see if the selector is not an element and not a modifier 
 */
 
@@ -54,7 +54,7 @@ $delimiters: (
 
 /*
   @name isElement
-  @param $selector {cssSelector}
+  @param $selector {string}
   @description Checks to see if the selector is an element by delimiter
 */
 
@@ -66,7 +66,7 @@ $delimiters: (
 
 /*
   @name isModifier
-  @param $selector {cssSelector}
+  @param $selector {string}
   @description Checks to see if the selector is modifier by delimiter
 */
 
@@ -87,7 +87,7 @@ $delimiters: (
 @mixin block($name: null) {
   $parent: quote(&);
   
-  @if isDefined($parent) {
+  @if isDefined($parent) == true {
     @include output(block-unique);
   } @else if isDefined($name) {
     .#{$name} {

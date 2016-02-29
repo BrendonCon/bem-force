@@ -4,7 +4,7 @@ An opinionated collection of mixins to enforce **BEM selector naming**. As you c
 **PLEASE NOTE:** A working example implementation can be found in **[./scss/app.scss](https://github.com/BrendonCon/BemForce/blob/master/scss/app.scss)**.
 
 ## Install
-Ensure you have Ruby **2.1.5** and Sass **3.4.21** or greater installed. I have added unit tests for the functions in BEMForce making use of Oddbird's [True](https://github.com/oddbird/true) Sass unit testing framework. You will need to install two depedencies for unit testing, True and True-Cli. You will need to install the **NPM dependencies** as well if you want to use gulp to build or watch etc. 
+Ensure you have Ruby **2.1.5** and LibSass **3.2.5** or greater installed. I have added unit tests for the functions in BEMForce making use of Oddbird's [True](https://github.com/oddbird/true) Sass unit testing framework. You will need to install two depedencies for unit testing, True and True-Cli. You will need to install the **NPM dependencies** as well if you want to use gulp to build or watch etc. 
 
 **Install true gem:** 
 ```
@@ -101,7 +101,7 @@ Probably overkill however there are some shorthand mixins which merely call the 
   height: 200px;
 }
 ```
-## Using Gulp
+## Gulp usage
 gulpfile.js has the following tasks avaiable to run via the gulp-cli:
 - **gulp-concat**: Concatenates all the BEMForce files to one .scss partial
 

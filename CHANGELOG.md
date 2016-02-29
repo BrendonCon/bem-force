@@ -5,6 +5,9 @@
  - Added Sass to Gemfile
  - Update to README.md
  - Bump up VERSION
+ - Update quote function in favor of libSass and Sass both working with inspect()
+ - Fixed block mixin to use isBlock function
+ - Updated output style for gulp-sass
 
 ## 0.0.1 (22/02/2016)
  - Added shorthand mixins
