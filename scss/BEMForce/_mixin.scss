@@ -1,6 +1,4 @@
 
-// ================================= MIXINS =================================
-
 /*
   @name block
   @param $name {string}
@@ -18,6 +16,8 @@
     } @else {
       @include output(valid-name-block);
     }  
+  } @else {
+    @include output(block-unique);
   }
 }
 
@@ -81,9 +81,9 @@
   $str: to_lower_case($string);
   
   @if map-has-key($strings, $string) {
-    @warn map-get($strings, $string);  
+    @debug map-get($strings, $string);  
   } @else {
-    @warn map-get($strings, string-missing);
+    @debug map-get($strings, string-missing);
   }
 }
 

@@ -8,6 +8,8 @@
  - Update quote function in favor of libSass and Sass both working with inspect()
  - Fixed block mixin to use isBlock function
  - Updated output style for gulp-sass
+ - Fixed blocks not erroring correctly, added additional check to isBlock function
+ - Removed comment headers in files
 
 ## 0.0.1 (22/02/2016)
  - Added shorthand mixins

@@ -1,6 +1,4 @@
 
-/* ================ EXAMPLE ================ */
-
 /* Import BEMForce */
 
 @import "BEMForce/manifest";
@@ -8,7 +6,7 @@
 /* Your code starts here */
 
 @include block(header) {
-  height: 10%;
+  height: 10%; 
   
   @include modifier(fixed) {
     width: 640px;
@@ -21,5 +19,6 @@
       float: left;
       height: 200px;
     }
+    
   }
 }

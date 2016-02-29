@@ -1,6 +1,4 @@
 
-// ================================= CONFIG =================================
-
 /*
   @name $strings {map}
   @description Error strings for console output
@@ -28,8 +26,6 @@ $delimiters: (
   modifier: "--"
 ) !default;
 
-// ================================= FUNCTIONS =================================
-
 /*
   @name isDefined
   @param $value {any}
@@ -49,7 +45,7 @@ $delimiters: (
 @function isBlock($selector) {
   $isElement: isElement($selector);
   $isModifier: isModifier($selector);
-  @return $isElement == false and $isModifier == false;
+  @return $isElement == false and $isModifier == false and $selector == "null";
 }
 
 /*
@@ -76,25 +72,25 @@ $delimiters: (
 }
 
 
-// ================================= MIXINS =================================
-
 /*
   @name block
   @param $name {string}
   @description Generate module block container
 */
 
-@mixin block($name: null) {
-  $parent: quote(&);
+@mixin block($name) {
+  $parent: inspect(&);
   
-  @if isDefined($parent) == true {
-    @include output(block-unique);
-  } @else if isDefined($name) {
-    .#{$name} {
-      @content;
+  @if isBlock($parent) {
+    @if isDefined($name) {
+      .#{$name} {
+        @content;
+      }  
+    } @else {
+      @include output(valid-name-block);
     }  
   } @else {
-    @include output(valid-name-block);
+    @include output(block-unique);
   }
 }
 
@@ -105,7 +101,7 @@ $delimiters: (
 */
 
 @mixin element($name) {
-  $parent: quote(&);
+  $parent: inspect(&);
   $delimiter: map-get($delimiters, element);
   
   @if isDefined($parent) {
@@ -130,7 +126,7 @@ $delimiters: (
 */
 
 @mixin modifier($name) {
-  $parent: quote(&);
+  $parent: inspect(&);
   $delimiter: map-get($delimiters, modifier);
 
   @if isDefined($parent) {
@@ -158,9 +154,9 @@ $delimiters: (
   $str: to_lower_case($string);
   
   @if map-has-key($strings, $string) {
-    @error map-get($strings, $string);  
+    @debug map-get($strings, $string);  
   } @else {
-    @error map-get($strings, string-missing);
+    @debug map-get($strings, string-missing);
   }
 }
 

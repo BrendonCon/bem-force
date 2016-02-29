@@ -1,6 +1,4 @@
 
-// ================================= FUNCTIONS =================================
-
 /*
   @name isDefined
   @param $value {any}
@@ -18,9 +16,7 @@
 */
 
 @function isBlock($selector) {
-  $isElement: isElement($selector);
-  $isModifier: isModifier($selector);
-  @return $isElement == false and $isModifier == false;
+  @return $selector == "null";
 }
 
 /*
