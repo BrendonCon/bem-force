@@ -1,0 +1,201 @@
+
+// ================================= CONFIG =================================
+
+/*
+  @name $strings {map}
+  @description Error strings for console output
+*/
+
+$strings: (
+  element-belong: 'Elements must belong to a block',
+  modifier-belong: 'A modifier must belong to a block or element',
+  block-unique: 'Blocks cannot belong to other blocks',
+  element-unique: 'Element cannot be added to other elements or modifiers',
+  modifier-unique: 'A modifier must be unique per selector',
+  string-missing: 'String missing for output',
+  valid-name-block: 'Please pass in a valid name for your block',
+  valid-name-element: 'Please pass in a valid name for your element',
+  valid-name-modifier: 'Please pass in a valid name for your modifier'
+) !default;
+
+/*
+  @name $delimiters {map}
+  @description Configs BEM delimiters for selector construction
+*/
+
+$delimiters: (
+  element: "__",
+  modifier: "--"
+) !default;
+
+// ================================= FUNCTIONS =================================
+
+/*
+  @name isDefined
+  @param $value {mixedType}
+  @description Checks to see if the value is defined
+*/
+
+@function isDefined($value: null) {
+  @return $value != null and $value != '' and $value != 0 and $value != false;
+}
+
+/*
+  @name isBlock
+  @param $selector {cssSelector}
+  @description Checks to see if the selector is not an element and not a modifier 
+*/
+
+@function isBlock($selector) {
+  $isElement: isElement($selector);
+  $isModifier: isModifier($selector);
+  @return $isElement == false and $isModifier == false;
+}
+
+/*
+  @name isElement
+  @param $selector {cssSelector}
+  @description Checks to see if the selector is an element by delimiter
+*/
+
+@function isElement($selector) {
+  $delimiter: map-get($delimiters, element);
+  @return str_index($selector, $delimiter) != null;
+}
+
+
+/*
+  @name isModifier
+  @param $selector {cssSelector}
+  @description Checks to see if the selector is modifier by delimiter
+*/
+
+@function isModifier($selector) {
+  $delimiter: map-get($delimiters, modifier);
+  @return str_index($selector, $delimiter) != null;
+}
+
+
+// ================================= MIXINS =================================
+
+/*
+  @name block
+  @param $name {string}
+  @description Generate module block container
+*/
+
+@mixin block($name: null) {
+  $parent: quote(&);
+  
+  @if isDefined($parent) {
+    @include output(block-unique);
+  } @else if isDefined($name) {
+    .#{$name} {
+      @content;
+    }  
+  } @else {
+    @include output(valid-name-block);
+  }
+}
+
+/*
+  @name element
+  @param $name {string}
+  @description Generates an element within a block
+*/
+
+@mixin element($name) {
+  $parent: quote(&);
+  $delimiter: map-get($delimiters, element);
+  
+  @if isDefined($parent) {
+    @if isElement($parent) or isModifier($parent) {
+      @include output(element-unique);
+    } @else if isDefined($name) {
+      &#{$delimiter}#{$name} {
+        @content;  
+      }   
+    } @else {
+      @include output(valid-name-element);
+    }
+  } @else {
+    @include output(element-belong);
+  }
+}
+
+/*
+  @name modifier
+  @param $name {string}
+  @description Generates a modifier on a block or element
+*/
+
+@mixin modifier($name) {
+  $parent: quote(&);
+  $delimiter: map-get($delimiters, modifier);
+
+  @if isDefined($parent) {
+    @if isModifier($parent) {
+      @include output(modifier-unique);
+    } @else if isDefined($name) {
+      &#{$delimiter}#{$name} {
+        @content;
+      }
+    } @else {
+      @include output(valid-name-modifier);
+    }  
+  } @else {
+    @include output(modifier-belong);
+  }
+}
+
+/*
+  @name ouput
+  @param $string {string}
+  @description Gets string from string map to output to the console
+*/
+
+@mixin output($string) {
+  $str: to_lower_case($string);
+  
+  @if map-has-key($strings, $string) {
+    @error map-get($strings, $string);  
+  } @else {
+    @error map-get($strings, string-missing);
+  }
+}
+
+/*
+  @name b
+  @param $name {string}
+  @description Shorthand for block mixin
+*/
+
+@mixin b($name) {
+  @include block($name) {
+    @content;
+  }
+}
+
+/*
+  @name e
+  @param $name {string}
+  @description Shorthand for element mixin
+*/
+
+@mixin e($name) {
+  @include element($name) {
+    @content;
+  }
+}
+
+/*
+  @name m
+  @param $name {string}
+  @description Shorthand for modifier mixin
+*/
+
+@mixin m($name) {
+  @include modifier($name) {
+    @content;
+  }
+}
