@@ -10,13 +10,15 @@ var gulp = require('gulp'),
     
 gulp.task('scss', function() {
   return gulp.src(exampleSassPath)
-    .pipe(plugins.sass({outputStyle: 'compressed'}).on('error', plugins.sass.logError))
+    .pipe(plugins.sass({outputStyle: 'expanded'})
+    .on('error', plugins.sass.logError))
     .pipe(gulp.dest(cssPath));
 });
 
 gulp.task('sass', function() {
   return gulp.src(exampleScssPath)
-    .pipe(plugins.sass({outputStyle: 'compressed'}).on('error', plugins.sass.logError))
+    .pipe(plugins.sass({outputStyle: 'expanded'})
+    .on('error', plugins.sass.logError))
     .pipe(gulp.dest(cssPath));
 });
 
@@ -33,15 +35,17 @@ gulp.task('build:sass', function() {
 });
 
 gulp.task('watch:scss', function() {
-  gulp.watch(exampleScssPath, ['scss']);
+  gulp.watch(exampleScssPath, ['example']);
 });
 
 gulp.task('watch:sass', function() {
-  gulp.watch(exampleSassPath, ['sass']);
+  gulp.watch(exampleSassPath, ['example']);
 });
 
 gulp.task('example', ['scss', 'sass']);
 
+gulp.task('build', ['build:sass', 'build:scss']);
+
 gulp.task('watch', ['watch:scss', 'watch:sass']);
 
-gulp.task('default', ['build:scss', 'build:sass', 'example', 'watch']);
+gulp.task('default', ['build:scss', 'build:sass', 'example']);

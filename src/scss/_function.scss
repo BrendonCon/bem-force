@@ -15,7 +15,7 @@
   @description Checks to see if the selector is not an element and not a modifier 
 */
 
-@function isBlock($selector) {
+@function isBlock($selector: "null") {
   @return $selector == "null";
 }
 

@@ -2,7 +2,8 @@
 // ================================ IMPORT(S) ================================
 
 @import "true";
-@import "../scss/BEMForce/manifest";
+@import "../src/scss/config";
+@import "../src/scss/function";
 
 // ================================= SUITE(S) =================================
 
@@ -40,7 +41,7 @@
 
 @include test-module("BEMForce isBlock function") {
 	@include test("should handle a block") {
-		$actual: isBlock('block');
+		$actual: isBlock();
 		$expected: true;
 		@include assert-equal($actual, $expected);
 	}

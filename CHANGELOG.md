@@ -1,11 +1,23 @@
 # Changelog
 
+## 0.0.4 (08/05/2016)
+ - Added scss references to unit tests
+ - Added default param value for isBlock function
+ - Added gulp build task
+ - Updated block unit test
+ - Fixed example gulp build
+ - Updated README
+ - Increment VERSION
+ - Added readable-stream NPM dependency
+
 ## 0.0.3 (28/03/2016)
  - Created new build processes
  - Created Sass version
  - Moved example files into an example folder
  - Added src folder with sass and scss versions
  - Removed index.html
+ - Updated true import path
+ - Updated VERSION
 
 ## 0.0.2 (29/02/2016)
  - Added package.json to handle npm dependencies 
