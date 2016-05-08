@@ -43,9 +43,7 @@ $delimiters: (
 */
 
 @function isBlock($selector) {
-  $isElement: isElement($selector);
-  $isModifier: isModifier($selector);
-  @return $isElement == false and $isModifier == false and $selector == "null";
+  @return $selector == "null";
 }
 
 /*

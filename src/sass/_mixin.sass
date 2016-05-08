@@ -1,0 +1,96 @@
+/*
+ *@name block
+ *@param $name {string}
+ *@description Generate module block container
+
+=block($name)
+  $parent: inspect(&)
+
+  @if isBlock($parent)
+    @if isDefined($name)
+      .#{$name}
+        @content
+    @else
+      +output(valid-name-block)
+  @else
+    +output(block-unique)
+
+/*
+ *@name element
+ *@param $name {string}
+ *@description Generates an element within a block
+
+=element($name)
+  $parent: inspect(&)
+  $delimiter: map-get($delimiters, element)
+
+  @if isDefined($parent)
+    @if isElement($parent) or isModifier($parent)
+      +output(element-unique)
+    @else if isDefined($name)
+      &#{$delimiter}#{$name}
+        @content
+    @else
+      +output(valid-name-element)
+  @else
+    +output(element-belong)
+
+/*
+ *@name modifier
+ *@param $name {string}
+ *@description Generates a modifier on a block or element
+
+=modifier($name)
+  $parent: inspect(&)
+  $delimiter: map-get($delimiters, modifier)
+
+  @if isDefined($parent)
+    @if isModifier($parent)
+      +output(modifier-unique)
+    @else if isDefined($name)
+      &#{$delimiter}#{$name}
+        @content
+    @else
+      +output(valid-name-modifier)
+  @else
+    +output(modifier-belong)
+
+/*
+ *@name ouput
+ *@param $string {string}
+ *@description Gets string from string map to output to the console
+
+=output($string)
+  $str: to_lower_case($string)
+
+  @if map-has-key($strings, $string)
+    @debug map-get($strings, $string)
+  @else
+    @debug map-get($strings, string-missing)
+
+/*
+ *@name b
+ *@param $name {string}
+ *@description Shorthand for block mixin
+
+=b($name)
+  +block($name)
+    @content
+
+/*
+ *@name e
+ *@param $name {string}
+ *@description Shorthand for element mixin
+
+=e($name)
+  +element($name)
+    @content
+
+/*
+ *@name m
+ *@param $name {string}
+ *@description Shorthand for modifier mixin
+
+=m($name)
+  +modifier($name)
+    @content

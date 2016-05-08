@@ -1,4 +1,12 @@
 # Changelog
+
+## 0.0.3 (28/03/2016)
+ - Created new build processes
+ - Created Sass version
+ - Moved example files into an example folder
+ - Added src folder with sass and scss versions
+ - Removed index.html
+
 ## 0.0.2 (29/02/2016)
  - Added package.json to handle npm dependencies 
  - Added gulp build system

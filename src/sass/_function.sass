@@ -1,0 +1,35 @@
+/*
+ *@name isDefined
+ *@param $value {any}
+ *@description Checks to see if the value is defined
+
+@function isDefined($value: null)
+  @return $value != null and $value != "" and $value != 0 and $value != false
+
+/*
+ *@name isBlock
+ *@param $selector {string}
+ *@description Checks to see if the selector is not an element and not a modifier
+
+@function isBlock($selector)
+  @return $selector == "null"
+
+/*
+ *@name isElement
+ *@param $selector {string}
+ *@description Checks to see if the selector is an element by delimiter
+
+@function isElement($selector)
+  $delimiter: map-get($delimiters, element)
+
+  @return str_index($selector, $delimiter) != null
+
+/*
+ *@name isModifier
+ *@param $selector {string}
+ *@description Checks to see if the selector is modifier by delimiter
+
+@function isModifier($selector)
+  $delimiter: map-get($delimiters, modifier)
+
+  @return str_index($selector, $delimiter) != null
