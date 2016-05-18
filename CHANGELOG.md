@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.5 (18/05/2016)
+ - Added gulp strip css comments for build
+ - Updated package.json
+
 ## 0.0.4 (08/05/2016)
  - Added scss references to unit tests
  - Added default param value for isBlock function

@@ -25,6 +25,7 @@ gulp.task('sass', function() {
 gulp.task('build:scss', function() {
   return gulp.src(scssPath)
     .pipe(plugins.concat('_bemForce.scss'))
+    .pipe(plugins.stripCssComments())
     .pipe(gulp.dest('./build/scss/'));
 });
 

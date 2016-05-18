@@ -1,8 +1,5 @@
 
-/*
-  @name $strings {map}
-  @description Error strings for console output
-*/
+
 
 $strings: (
   element-belong: 'Elements must belong to a block',
@@ -16,41 +13,26 @@ $strings: (
   valid-name-modifier: 'Please pass in a valid name for your modifier'
 ) !default;
 
-/*
-  @name $delimiters {map}
-  @description Configs BEM delimiters for selector construction
-*/
+
 
 $delimiters: (
   element: "__",
   modifier: "--"
 ) !default;
 
-/*
-  @name isDefined
-  @param $value {any}
-  @description Checks to see if the value is defined
-*/
+
 
 @function isDefined($value: null) {
   @return $value != null and $value != '' and $value != 0 and $value != false;
 }
 
-/*
-  @name isBlock
-  @param $selector {string}
-  @description Checks to see if the selector is not an element and not a modifier 
-*/
+
 
 @function isBlock($selector: "null") {
   @return $selector == "null";
 }
 
-/*
-  @name isElement
-  @param $selector {string}
-  @description Checks to see if the selector is an element by delimiter
-*/
+
 
 @function isElement($selector) {
   $delimiter: map-get($delimiters, element);
@@ -58,11 +40,7 @@ $delimiters: (
 }
 
 
-/*
-  @name isModifier
-  @param $selector {string}
-  @description Checks to see if the selector is modifier by delimiter
-*/
+
 
 @function isModifier($selector) {
   $delimiter: map-get($delimiters, modifier);
@@ -70,11 +48,7 @@ $delimiters: (
 }
 
 
-/*
-  @name block
-  @param $name {string}
-  @description Generate module block container
-*/
+
 
 @mixin block($name) {
   $parent: inspect(&);
@@ -92,11 +66,7 @@ $delimiters: (
   }
 }
 
-/*
-  @name element
-  @param $name {string}
-  @description Generates an element within a block
-*/
+
 
 @mixin element($name) {
   $parent: inspect(&);
@@ -117,11 +87,7 @@ $delimiters: (
   }
 }
 
-/*
-  @name modifier
-  @param $name {string}
-  @description Generates a modifier on a block or element
-*/
+
 
 @mixin modifier($name) {
   $parent: inspect(&);
@@ -142,11 +108,7 @@ $delimiters: (
   }
 }
 
-/*
-  @name ouput
-  @param $string {string}
-  @description Gets string from string map to output to the console
-*/
+
 
 @mixin output($string) {
   $str: to_lower_case($string);
@@ -158,11 +120,7 @@ $delimiters: (
   }
 }
 
-/*
-  @name b
-  @param $name {string}
-  @description Shorthand for block mixin
-*/
+
 
 @mixin b($name) {
   @include block($name) {
@@ -170,11 +128,7 @@ $delimiters: (
   }
 }
 
-/*
-  @name e
-  @param $name {string}
-  @description Shorthand for element mixin
-*/
+
 
 @mixin e($name) {
   @include element($name) {
@@ -182,11 +136,7 @@ $delimiters: (
   }
 }
 
-/*
-  @name m
-  @param $name {string}
-  @description Shorthand for modifier mixin
-*/
+
 
 @mixin m($name) {
   @include modifier($name) {

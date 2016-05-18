@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "": "",
+    "gulp-strip-css-comments": "^1.2.0",
     "readable-stream": "^2.1.2"
   },
   "scripts": {
