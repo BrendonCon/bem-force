@@ -51,12 +51,12 @@ $delimiters: (element: "__", modifier: "--") !default
  *@param $name {string}
  *@description Generate module block container
 
-=block($name)
+=block($name, $namespace: null)
   $parent: inspect(&)
 
   @if isBlock($parent)
     @if isDefined($name)
-      .#{$name}
+      .#{$namespace}#{$name}
         @content
     @else
       +output(valid-name-block)
@@ -119,10 +119,11 @@ $delimiters: (element: "__", modifier: "--") !default
 /*
  *@name b
  *@param $name {string}
+ *@param $namespace {string}
  *@description Shorthand for block mixin
 
-=b($name)
-  +block($name)
+=b($name, $namespace)
+  +block($name, $namespace)
     @content
 
 /*

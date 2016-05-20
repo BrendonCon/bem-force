@@ -1,55 +1,18 @@
-/* Import BEMForce */
-/*
- *@name $strings {map}
- *@description Error strings for console output */
-/*
- *@name $delimiters {map}
- *@description Configs BEM delimiters for selector construction */
-/*
- *@name isDefined
- *@param $value {any}
- *@description Checks to see if the value is defined */
-/*
- *@name isBlock
- *@param $selector {string}
- *@description Checks to see if the selector is not an element and not a modifier */
-/*
- *@name isElement
- *@param $selector {string}
- *@description Checks to see if the selector is an element by delimiter */
-/*
- *@name isModifier
- *@param $selector {string}
- *@description Checks to see if the selector is modifier by delimiter */
-/*
- *@name block
- *@param $name {string}
- *@description Generate module block container */
-/*
- *@name element
- *@param $name {string}
- *@description Generates an element within a block */
-/*
- *@name modifier
- *@param $name {string}
- *@description Generates a modifier on a block or element */
-/*
- *@name ouput
- *@param $string {string}
- *@description Gets string from string map to output to the console */
-/*
- *@name b
- *@param $name {string}
- *@description Shorthand for block mixin */
-/*
- *@name e
- *@param $name {string}
- *@description Shorthand for element mixin */
-/*
- *@name m
- *@param $name {string}
- *@description Shorthand for modifier mixin */
-/* Your code starts here */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .header {
   height: 10%;
 }
@@ -63,6 +26,23 @@
 }
 
 .header__search--left {
+  float: left;
+  height: 200px;
+}
+
+.c-header {
+  height: 10%;
+}
+
+.c-header--fixed {
+  width: 640px;
+}
+
+.c-header__search {
+  float: right;
+}
+
+.c-header__search--left {
   float: left;
   height: 200px;
 }

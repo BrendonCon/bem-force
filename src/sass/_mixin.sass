@@ -3,12 +3,12 @@
  *@param $name {string}
  *@description Generate module block container
 
-=block($name)
+=block($name, $namespace: null)
   $parent: inspect(&)
 
   @if isBlock($parent)
     @if isDefined($name)
-      .#{$name}
+      .#{$namespace}#{$name}
         @content
     @else
       +output(valid-name-block)
@@ -71,10 +71,11 @@
 /*
  *@name b
  *@param $name {string}
+ *@param $namespace {string}
  *@description Shorthand for block mixin
 
-=b($name)
-  +block($name)
+=b($name, $namespace)
+  +block($name, $namespace)
     @content
 
 /*

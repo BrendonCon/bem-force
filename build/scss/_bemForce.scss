@@ -50,12 +50,12 @@ $delimiters: (
 
 
 
-@mixin block($name) {
+@mixin block($name, $namespace: null) {
   $parent: inspect(&);
   
   @if isBlock($parent) {
     @if isDefined($name) {
-      .#{$name} {
+      .#{$namespace}#{$name} {
         @content;
       }  
     } @else {
@@ -122,8 +122,8 @@ $delimiters: (
 
 
 
-@mixin b($name) {
-  @include block($name) {
+@mixin b($name, $namespace) {
+  @include block($name, $namespace) {
     @content;
   }
 }

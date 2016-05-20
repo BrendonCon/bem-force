@@ -21,3 +21,20 @@
     }
   }
 }
+
+@include b("header", "c-") {
+  height: 10%;
+  
+  @include m("fixed") {
+    width: 640px;
+  }
+  
+  @include e("search") {
+    float: right;
+    
+    @include m("left") {
+      float: left;
+      height: 200px;
+    }
+  }
+}

@@ -10,8 +10,9 @@ var gulp = require('gulp'),
     
 gulp.task('scss', function() {
   return gulp.src(exampleSassPath)
-    .pipe(plugins.sass({outputStyle: 'expanded'})
+    .pipe(plugins.sass({outputStyle: 'expanded'})    
     .on('error', plugins.sass.logError))
+    .pipe(plugins.stripCssComments())
     .pipe(gulp.dest(cssPath));
 });
 

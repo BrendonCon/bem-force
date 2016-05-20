@@ -117,6 +117,45 @@ call the above expanded versions for saving keystrokes!
   height: 200px;
 }
 ```
+**Using Namespaces:**
+```sass
+@include b("header", "c-") {
+  height: 10%;
+  
+  @include m("fixed") {
+    width: 640px;
+  }
+  
+  @include e("search") {
+    float: right;
+    
+    @include m("left") {
+      float: left;
+      height: 200px;
+    }
+  }
+}
+```
+**CSS:**
+```css
+.c-header {
+  height: 10%;
+}
+
+.c-header--fixed {
+  width: 640px;
+}
+
+.c-header__search {
+  float: right;
+}
+
+.c-header__search--left {
+  float: left;
+  height: 200px;
+}
+```
+
 ## Gulp usage
 gulpfile.js has the following tasks avaiable to run via the gulp-cli:
 - **gulp**: The default task builds both the scss and sass versions, 

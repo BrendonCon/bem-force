@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.6 (20/05/2016)
+ - Added namespace param to block
+ - Updated README example
+ - Added removal of CSS comments for the example
+
 ## 0.0.5 (18/05/2016)
  - Added gulp strip css comments for build
  - Updated package.json

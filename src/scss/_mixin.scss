@@ -2,15 +2,16 @@
 /*
   @name block
   @param $name {string}
+  @param $nameSpace {string}
   @description Generate module block container
 */
 
-@mixin block($name) {
+@mixin block($name, $namespace: null) {
   $parent: inspect(&);
   
   @if isBlock($parent) {
     @if isDefined($name) {
-      .#{$name} {
+      .#{$namespace}#{$name} {
         @content;
       }  
     } @else {
@@ -93,8 +94,8 @@
   @description Shorthand for block mixin
 */
 
-@mixin b($name) {
-  @include block($name) {
+@mixin b($name, $namespace) {
+  @include block($name, $namespace) {
     @content;
   }
 }
