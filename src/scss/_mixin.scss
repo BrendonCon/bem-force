@@ -73,22 +73,6 @@
 }
 
 /*
-  @name ouput
-  @param $string {string}
-  @description Gets string from string map to output to the console
-*/
-
-@mixin output($string) {
-  $str: to_lower_case($string);
-  
-  @if map-has-key($strings, $string) {
-    @debug map-get($strings, $string);  
-  } @else {
-    @debug map-get($strings, string-missing);
-  }
-}
-
-/*
   @name b
   @param $name {string}
   @description Shorthand for block mixin
@@ -121,5 +105,65 @@
 @mixin m($name) {
   @include modifier($name) {
     @content;
+  }
+}
+
+/*
+  @name createStateSelector
+  @param $name {string}
+  @param $state {string}  
+  @description Generates state selector
+*/
+
+@mixin createStateSelector($name, $state: is) {
+  $parent: inspect(&);
+  $delimiter: map-get($delimiters, state);
+
+  @if isDefined($parent) {  
+    &.#{$state}#{$delimiter}#{$name} {
+      @content;  
+    }
+  } @else {
+    @include output(state-selector);    
+  }
+}
+
+/*
+  @name is
+  @param $name {string}
+  @description facade that creates 'is' state selector
+*/
+
+@mixin is($name) {
+  @include createStateSelector($name) {
+    @content;
+  }
+}
+
+/*
+  @name is
+  @param $name {string}
+  @description facade that creates 'has' state selector
+*/
+
+@mixin has($name) {
+  @include createStateSelector($name, has) {
+    @content;
+  }
+}
+
+/*
+  @name ouput
+  @param $string {string}
+  @description Gets string from string map to output to the console
+*/
+
+@mixin output($string) {
+  $str: to_lower_case($string);
+  
+  @if map-has-key($strings, $string) {
+    @debug map-get($strings, $string);  
+  } @else {
+    @debug map-get($strings, string-missing);
   }
 }

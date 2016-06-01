@@ -32,6 +32,14 @@
   @include e("search") {
     float: right;
     
+    @include is(disabled) {
+      pointer-events: none;
+    }
+     
+    @include has(validated) {
+      border: 1px green;
+    }     
+      
     @include m("left") {
       float: left;
       height: 200px;

@@ -10,14 +10,16 @@ $strings: (
   string-missing: 'String missing for output',
   valid-name-block: 'Please pass in a valid name for your block',
   valid-name-element: 'Please pass in a valid name for your element',
-  valid-name-modifier: 'Please pass in a valid name for your modifier'
+  valid-name-modifier: 'Please pass in a valid name for your modifier',
+  state-selector: 'State selectors "is" and "has" must belong to a selector'
 ) !default;
 
 
 
 $delimiters: (
   element: "__",
-  modifier: "--"
+  modifier: "--",
+  state: '-'
 ) !default;
 
 
@@ -110,18 +112,6 @@ $delimiters: (
 
 
 
-@mixin output($string) {
-  $str: to_lower_case($string);
-  
-  @if map-has-key($strings, $string) {
-    @debug map-get($strings, $string);  
-  } @else {
-    @debug map-get($strings, string-missing);
-  }
-}
-
-
-
 @mixin b($name, $namespace) {
   @include block($name, $namespace) {
     @content;
@@ -141,5 +131,48 @@ $delimiters: (
 @mixin m($name) {
   @include modifier($name) {
     @content;
+  }
+}
+
+
+
+@mixin createStateSelector($name, $state: is) {
+  $parent: inspect(&);
+  $delimiter: map-get($delimiters, state);
+
+  @if isDefined($parent) {  
+    &.#{$state}#{$delimiter}#{$name} {
+      @content;  
+    }
+  } @else {
+    @include output(state-selector);    
+  }
+}
+
+
+
+@mixin is($name) {
+  @include createStateSelector($name) {
+    @content;
+  }
+}
+
+
+
+@mixin has($name) {
+  @include createStateSelector($name, has) {
+    @content;
+  }
+}
+
+
+
+@mixin output($string) {
+  $str: to_lower_case($string);
+  
+  @if map-has-key($strings, $string) {
+    @debug map-get($strings, $string);  
+  } @else {
+    @debug map-get($strings, string-missing);
   }
 }

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.07 (02/06/2016)
+ - Added state mixins 
+ - Added state delimiter
+ - Rebuilt examples and build
+ - Updated README
+ - NOTE: Considering dropping Sass syntax?
+
 ## 0.0.6 (20/05/2016)
  - Added namespace param to block
  - Updated README example

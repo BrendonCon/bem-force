@@ -47,7 +47,9 @@ are for the output strings for error feedback and the delimiters with which the 
 ## Mixins
 - **block**: Generates a block selector
 - **element**: Generates an element selector based off of a block
-- **modifier**: Generates a modifier selector based off of a block or 
+- **modifier**: Generates a modifier selector based off of a block or
+- **is**: Generates a state selector prefixed with 'is'
+- **has**: Generates a state selector prefixed with 'has'  
 an element or both
 
 ## Shorthand Mixins
@@ -148,6 +150,61 @@ call the above expanded versions for saving keystrokes!
 
 .c-header__search {
   float: right;
+}
+
+.c-header__search--left {
+  float: left;
+  height: 200px;
+}
+```
+
+**Using State:**
+```sass
+@include b("header", "c-") {
+  height: 10%;
+  
+  @include m("fixed") {
+    width: 640px;
+  }
+  
+  @include e("search") {
+    float: right;
+    
+    @include is(disabled) {
+      pointer-events: none;
+    }
+     
+    @include has(validated) {
+      pointer-events: none;
+    }     
+      
+    @include m("left") {
+      float: left;
+      height: 200px;
+    }
+  }
+}
+```
+**CSS:**
+```css
+.c-header {
+  height: 10%;
+}
+
+.c-header--fixed {
+  width: 640px;
+}
+
+.c-header__search {
+  float: right;
+}
+
+.c-header__search.is-disabled {
+  pointer-events: none;
+}
+
+.c-header__search.has-validated {
+  border: 1px green;
 }
 
 .c-header__search--left {

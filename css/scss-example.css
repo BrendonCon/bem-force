@@ -29,6 +29,14 @@
   float: right;
 }
 
+.c-header__search.is-disabled {
+  pointer-events: none;
+}
+
+.c-header__search.has-validated {
+  border: 1px green;
+}
+
 .c-header__search--left {
   float: left;
   height: 200px;

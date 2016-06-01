@@ -13,7 +13,8 @@ $strings: (
   string-missing: 'String missing for output',
   valid-name-block: 'Please pass in a valid name for your block',
   valid-name-element: 'Please pass in a valid name for your element',
-  valid-name-modifier: 'Please pass in a valid name for your modifier'
+  valid-name-modifier: 'Please pass in a valid name for your modifier',
+  state-selector: 'State selectors "is" and "has" must belong to a selector'
 ) !default;
 
 /*
@@ -23,5 +24,6 @@ $strings: (
 
 $delimiters: (
   element: "__",
-  modifier: "--"
+  modifier: "--",
+  state: '-'
 ) !default;
