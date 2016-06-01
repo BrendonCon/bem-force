@@ -50,7 +50,6 @@ are for the output strings for error feedback and the delimiters with which the 
 - **modifier**: Generates a modifier selector based off of a block or
 - **is**: Generates a state selector prefixed with 'is'
 - **has**: Generates a state selector prefixed with 'has'  
-an element or both
 
 ## Shorthand Mixins
 Probably overkill however there are some shorthand mixins which merely 
