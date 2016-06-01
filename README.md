@@ -47,7 +47,7 @@ are for the output strings for error feedback and the delimiters with which the 
 ## Mixins
 - **block**: Generates a block selector
 - **element**: Generates an element selector based off of a block
-- **modifier**: Generates a modifier selector based off of a block or
+- **modifier**: Generates a modifier selector based off of a block or element
 - **is**: Generates a state selector prefixed with 'is'
 - **has**: Generates a state selector prefixed with 'has'  
 
